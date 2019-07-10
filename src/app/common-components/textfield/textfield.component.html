@@ -1,0 +1,13 @@
+<div [formGroup]="group" class="form-group">
+    <div [ngClass]="{
+        'has-error': this.group.controls[field.name].invalid && (this.group.controls[field.name].dirty || this.group.controls[field.name].touched),
+        'has-success': this.group.controls[field.name].valid && (this.group.controls[field.name].dirty || this.group.controls[field.name].touched)
+         }"
+        class="input-group m-b">
+      <span class="input-group-addon"><i [ngClass]="field.icon"></i></span>
+      <input class="form-control"
+             [formControlName]="field.name"
+             [placeholder]="field.label"
+             [type]="field.inputType"/>
+    </div>
+</div>

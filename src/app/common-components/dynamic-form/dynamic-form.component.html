@@ -1,0 +1,5 @@
+<form class="m-t" [formGroup]="form" (ngSubmit)="onSubmit($event)">
+  <ng-container *ngFor="let field of fields;" appDynamicField [field]="field" [group]="form">
+  </ng-container>
+  <button class="btn btn-primary block full-width m-b" type="submit">Login</button>
+</form>
