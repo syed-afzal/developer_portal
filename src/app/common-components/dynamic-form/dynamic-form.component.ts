@@ -52,13 +52,11 @@ export class DynamicFormComponent implements OnInit {
     event.preventDefault();
     event.stopPropagation();
     this.getFormValidationErrors();
-    console.log(this.form);
     if (this.form.valid) {
       this.submit.emit(this.form.value);
       this.toaster.showToast('success', 'Successfully logged in');
     } else {
       this.validateAllFormFields(this.form);
-      console.log(this.errSummary);
       this.toaster.showToast('error', this.errSummary);
     }
   }
