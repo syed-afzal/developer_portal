@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {Validators} from '@angular/forms';
 import {FieldConfig} from './field.interface';
 import {DynamicFormComponent} from './common-components/dynamic-form/dynamic-form.component';
+import {ToasterService} from './services/toaster.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,8 @@ export class AppComponent {
   title = 'developer-portal';
   @ViewChild(DynamicFormComponent, {static: false}) form: DynamicFormComponent;
 
+  constructor(private toaster: ToasterService) {
+  }
 
   regConfig: FieldConfig[] = [
     {

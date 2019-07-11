@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, FormControl, ValidationErrors} from '@angular/forms';
 import {FieldConfig, Validator} from '../../field.interface';
+import {ToasterService} from '../../services/toaster.service';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -11,8 +12,10 @@ export class DynamicFormComponent implements OnInit {
   @Input() fields: FieldConfig[] = [];
   @Output() submit: EventEmitter<any> = new EventEmitter<any>();
   form: FormGroup;
+  errSummary: string = '';
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private toaster: ToasterService) {
   }
 
   get value() {
@@ -48,10 +51,15 @@ export class DynamicFormComponent implements OnInit {
   onSubmit(event: Event) {
     event.preventDefault();
     event.stopPropagation();
+    this.getFormValidationErrors();
+    console.log(this.form);
     if (this.form.valid) {
       this.submit.emit(this.form.value);
+      this.toaster.showToast('success', 'Successfully logged in');
     } else {
       this.validateAllFormFields(this.form);
+      console.log(this.errSummary);
+      this.toaster.showToast('error', this.errSummary);
     }
   }
 
@@ -62,6 +70,21 @@ export class DynamicFormComponent implements OnInit {
     });
   }
 
+  getFormValidationErrors() {
+    this.errSummary = '';
+    Object.keys(this.form.controls).forEach(key => {
+      const controlErrors: ValidationErrors = this.form.get(key).errors;
+      if (controlErrors != null) {
+        Object.keys(controlErrors).forEach(keyError => {
+          if (keyError === 'required') {
+            this.errSummary += `*${key} is required </br>`;
+          } else if (keyError === 'pattern') {
+            this.errSummary += `*${key} is not valid</br>`;
+          }
+        });
+      }
+    });
+  }
 
 
   ngOnInit() {
