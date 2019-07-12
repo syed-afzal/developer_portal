@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl, ValidationErrors} from '@angular/forms';
-import {FieldConfig, Validator} from '../../field.interface';
+import {FieldConfig, Validator} from '../../models/common/field.interface';
 import {ToasterService} from '../../services/toaster.service';
 
 @Component({

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TextfieldComponent } from './common-components/textfield/textfield.component';
-import { DynamicFieldDirective } from './common-components/dynamic-field.directive';
+import { DynamicFieldDirective } from './common-components/directives/dynamic-field.directive';
 import { DynamicFormComponent } from './common-components/dynamic-form/dynamic-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 

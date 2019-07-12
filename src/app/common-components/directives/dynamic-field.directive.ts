@@ -4,8 +4,8 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import {FormGroup} from '@angular/forms';
-import {FieldConfig} from '../field.interface';
-import {TextfieldComponent} from './textfield/textfield.component';
+import {FieldConfig} from '../../models/common/field.interface';
+import {TextfieldComponent} from '../textfield/textfield.component';
 
 @Directive({
   selector: '[appDynamicField]'
