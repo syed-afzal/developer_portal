@@ -36,5 +36,10 @@ export const LoginFormConfig: FieldConfig[] = [
         message: 'Password Required'
       }
     ]
+  },
+  {
+    type: 'button',
+    label: 'Login',
+    inputType: 'submit'
   }
 ];

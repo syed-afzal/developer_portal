@@ -5,9 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TextfieldComponent } from './common-components/textfield/textfield.component';
+import { ButtonComponent } from './common-components/button/button.component';
 import { DynamicFieldDirective } from './common-components/directives/dynamic-field.directive';
 import { DynamicFormComponent } from './common-components/dynamic-form/dynamic-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     DynamicFieldDirective,
     DynamicFormComponent,
-    TextfieldComponent
+    TextfieldComponent,
+    ButtonComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
-    TextfieldComponent
+    TextfieldComponent,
+    ButtonComponent
   ]
 })
 export class AppModule { }

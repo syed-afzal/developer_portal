@@ -6,6 +6,7 @@ import {
 import {FormGroup} from '@angular/forms';
 import {FieldConfig} from '../../models/common/field.interface';
 import {TextfieldComponent} from '../textfield/textfield.component';
+import {ButtonComponent} from '../button/button.component';
 
 @Directive({
   selector: '[appDynamicField]'
@@ -13,7 +14,8 @@ import {TextfieldComponent} from '../textfield/textfield.component';
 export class DynamicFieldDirective implements OnInit {
 
   componentMapper: any = {
-    input: TextfieldComponent
+    input: TextfieldComponent,
+    button: ButtonComponent
   };
   componentRef: any;
   @Input() field: FieldConfig;
