@@ -10,6 +10,7 @@ import { DynamicFieldDirective } from './common-components/directives/dynamic-fi
 import { DynamicFormComponent } from './common-components/dynamic-form/dynamic-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { LoginComponent } from './components/login/login.component';
     DynamicFormComponent,
     TextfieldComponent,
     ButtonComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
