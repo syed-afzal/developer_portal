@@ -17,6 +17,10 @@ export class LoginComponent implements OnInit {
     console.log('Form Body : ', e);
   }
 
+  getCurrentYear() {
+    return new Date().getFullYear();
+  }
+
   ngOnInit() {
   }
 

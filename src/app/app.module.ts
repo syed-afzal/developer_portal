@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TextfieldComponent } from './common-components/textfield/textfield.component';
@@ -11,7 +10,14 @@ import { DynamicFormComponent } from './common-components/dynamic-form/dynamic-f
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import {HttpClientModule} from '@angular/common/http';
+import {TranslateService} from './services/translate.service';
+import { TranslatePipe } from './pipes/translate.pipe';
 
+export function setupTranslateFactory(
+  service: TranslateService): () => void {
+  return () => service.use('en');
+}
 
 @NgModule({
   declarations: [
@@ -21,16 +27,24 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     TextfieldComponent,
     ButtonComponent,
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    TranslatePipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+    provide: APP_INITIALIZER,
+    useFactory: setupTranslateFactory,
+    deps: [ TranslateService ],
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     TextfieldComponent,
