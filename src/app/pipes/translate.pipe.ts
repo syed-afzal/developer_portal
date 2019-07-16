@@ -10,7 +10,13 @@ export class TranslatePipe implements PipeTransform {
   }
 
   transform(key: any): any {
-    return this.translate.data[key] || key;
+    let keyValue;
+    keyValue = this.translate.data[key];
+    if (keyValue) {
+      return keyValue;
+    } else {
+      return `Missing Translation ${key}`;
+    }
   }
 
 }
