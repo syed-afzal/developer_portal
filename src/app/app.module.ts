@@ -1,18 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule, APP_INITIALIZER} from '@angular/core';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
-import { TextfieldComponent } from './common-components/textfield/textfield.component';
-import { ButtonComponent } from './common-components/button/button.component';
-import { DynamicFieldDirective } from './common-components/directives/dynamic-field.directive';
-import { DynamicFormComponent } from './common-components/dynamic-form/dynamic-form.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './components/login/login.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AppComponent} from './app.component';
+import {TextfieldComponent} from './common-components/textfield/textfield.component';
+import {ButtonComponent} from './common-components/button/button.component';
+import {DynamicFieldDirective} from './common-components/directives/dynamic-field.directive';
+import {DynamicFormComponent} from './common-components/dynamic-form/dynamic-form.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {LoginComponent} from './components/login/login.component';
+import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
 import {HttpClientModule} from '@angular/common/http';
 import {TranslateService} from './services/translate.service';
-import { TranslatePipe } from './pipes/translate.pipe';
+import {TranslatePipe} from './pipes/translate.pipe';
+import {LandingComponent} from './components/landing/landing.component';
+import {AppRoutingModule} from './app-routing.module';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 export function setupTranslateFactory(
   service: TranslateService): () => void {
@@ -28,22 +31,25 @@ export function setupTranslateFactory(
     ButtonComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    TranslatePipe
+    TranslatePipe,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     {
-    provide: APP_INITIALIZER,
-    useFactory: setupTranslateFactory,
-    deps: [ TranslateService ],
-    multi: true
-  }
+      provide: APP_INITIALIZER,
+      useFactory: setupTranslateFactory,
+      deps: [TranslateService],
+      multi: true
+    },
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -51,4 +57,5 @@ export function setupTranslateFactory(
     ButtonComponent
   ]
 })
-export class AppModule { }
+export class AppModule {
+}
