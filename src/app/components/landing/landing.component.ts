@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { WOW } from 'src/assets/js/plugins/wow/wow.min.js';
+import {WOW} from 'src/assets/js/plugins/wow/wow.min.js';
+
 declare var $: any;
 
 @Component({
@@ -10,13 +11,13 @@ declare var $: any;
 export class LandingComponent implements OnInit {
 
   constructor() {
+    // Activate WOW.js plugin for animation on scrol
+    new WOW({live: false}).init();
   }
 
   ngOnInit() {
     $(document).ready(() => {
 
-      // Activate WOW.js plugin for animation on scrol
-      new WOW({}).init();
 
       $('body').scrollspy({
         target: '.navbar-fixed-top',
@@ -35,9 +36,9 @@ export class LandingComponent implements OnInit {
     });
 
     const cbpAnimatedHeader = (() => {
-      let docElem = document.documentElement,
-        didScroll = false,
-        changeHeaderOn = 200;
+      const docElem = document.documentElement;
+      let didScroll = false;
+      const  changeHeaderOn = 200;
 
       function init() {
         window.addEventListener('scroll', (event) => {
