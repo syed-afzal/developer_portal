@@ -16,6 +16,7 @@ import {TranslatePipe} from './pipes/translate.pipe';
 import {LandingComponent} from './components/landing/landing.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 
 export function setupTranslateFactory(
   service: TranslateService): () => void {
@@ -32,7 +33,8 @@ export function setupTranslateFactory(
     LoginComponent,
     ForgotPasswordComponent,
     TranslatePipe,
-    LandingComponent
+    LandingComponent,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,

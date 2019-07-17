@@ -7,7 +7,7 @@
       <span class="input-group-addon"><i [ngClass]="field.icon"></i></span>
       <input class="form-control"
              [formControlName]="field.name"
-             [placeholder]="field.label"
+             [placeholder]="field.label | translate"
              [type]="field.inputType"/>
     </div>
 </div>

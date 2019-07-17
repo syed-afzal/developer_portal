@@ -8,7 +8,7 @@
     <app-dynamic-form [fields]="formConfig" (submit)="submit($event)">
     </app-dynamic-form>
 
-    <a>
+    <a [routerLink]="['/forgot-password']">
       <small> {{ 'ForgotPassword' | translate }}</small>
     </a>
 

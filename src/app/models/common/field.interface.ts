@@ -14,4 +14,5 @@ export interface FieldConfig {
   type: string;
   value?: any;
   validations?: Validator[];
+  validator?: any;
 }

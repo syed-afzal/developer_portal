@@ -28,6 +28,9 @@ export class DynamicFormComponent implements OnInit {
       if (field.type === 'button') {
         return;
       }
+      if (field.validator) {
+        group.validator = field.validator('password', 'confirmpassword').bind(this);
+      }
       const control = this.fb.control(
         field.value,
         this.bindValidations(field.validations || [])
@@ -78,6 +81,8 @@ export class DynamicFormComponent implements OnInit {
             this.errSummary += `*${key} is required </br>`;
           } else if (keyError === 'pattern') {
             this.errSummary += `*${key} is not valid</br>`;
+          } else if (keyError === 'notEquivalent') {
+            this.errSummary += `*${key} and password does not match</br>`;
           }
         });
       }

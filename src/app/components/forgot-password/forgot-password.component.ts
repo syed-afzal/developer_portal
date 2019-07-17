@@ -17,6 +17,9 @@ export class ForgotPasswordComponent implements OnInit {
   submit(e) {
     console.log('Form Body : ', e);
   }
+  getCurrentYear() {
+    return new Date().getFullYear();
+  }
 
   ngOnInit() {
   }
