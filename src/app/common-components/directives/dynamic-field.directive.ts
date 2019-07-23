@@ -7,6 +7,7 @@ import {FormGroup} from '@angular/forms';
 import {FieldConfig} from '../../models/common/field.interface';
 import {TextfieldComponent} from '../textfield/textfield.component';
 import {ButtonComponent} from '../button/button.component';
+import {Subject} from 'rxjs';
 
 @Directive({
   selector: '[appDynamicField]'
@@ -20,7 +21,7 @@ export class DynamicFieldDirective implements OnInit {
   componentRef: any;
   @Input() field: FieldConfig;
   @Input() group: FormGroup;
-
+  @Input() sendPasswordButton: Subject<void>;
 
   constructor(private resolver: ComponentFactoryResolver,
               private container: ViewContainerRef) {
@@ -34,5 +35,6 @@ export class DynamicFieldDirective implements OnInit {
     this.componentRef = this.container.createComponent(factory);
     this.componentRef.instance.field = this.field;
     this.componentRef.instance.group = this.group;
+    this.componentRef.instance.subject = this.sendPasswordButton;
   }
 }

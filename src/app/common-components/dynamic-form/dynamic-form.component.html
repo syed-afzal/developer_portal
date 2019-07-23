@@ -1,3 +1,3 @@
 <form class="m-t" [formGroup]="form" (ngSubmit)="onSubmit($event)">
-  <ng-container *ngFor="let field of fields;" appDynamicField [field]="field" [group]="form"></ng-container>
+  <ng-container *ngFor="let field of fields;" appDynamicField [field]="field" [group]="form" [sendPasswordButton]="sendPasswordButton"></ng-container>
 </form>

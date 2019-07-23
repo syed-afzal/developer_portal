@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angula
 import {FormGroup, FormBuilder, Validators, FormControl, ValidationErrors} from '@angular/forms';
 import {FieldConfig, Validator} from '../../models/common/field.interface';
 import {ToasterService} from '../../services/toaster.service';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -11,6 +12,7 @@ import {ToasterService} from '../../services/toaster.service';
 export class DynamicFormComponent implements OnInit {
   @Input() fields: FieldConfig[] = [];
   @Output() submit: EventEmitter<any> = new EventEmitter<any>();
+  @Input() sendPasswordButton: Subject<void>;
   form: FormGroup;
   errSummary: string = '';
 

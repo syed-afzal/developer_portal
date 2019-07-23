@@ -1,5 +1,13 @@
 <div [formGroup]="group" class="form-group">
-  <button class="btn btn-primary block full-width m-b" [type]="field.inputType">
-    {{field.label | translate}}
-  </button>
+  <ng-container *ngIf="field.inputType === 'submit'">
+    <button class="btn btn-primary block full-width m-b" [type]="field.inputType">
+      {{field.label | translate}}
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="field.inputType === 'button'">
+    <button class="btn btn-primary block full-width m-b" [type]="field.inputType" (click)="handleClick()">
+      {{field.label | translate}}
+    </button>
+  </ng-container>
 </div>
