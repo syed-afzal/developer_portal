@@ -10,14 +10,14 @@ import {Subject} from 'rxjs';
 export class PasswordResetComponent implements OnInit {
 
   formConfig;
-  sendPasswordButton: Subject<void> = new Subject();
+  sendPasswordBtn: Subject<void> = new Subject();
 
   constructor() {
     this.formConfig = PasswordResetFormConfig;
   }
 
   ngOnInit() {
-    this.sendPasswordButton.subscribe(() => {
+    this.sendPasswordBtn.subscribe(() => {
     });
   }
 
